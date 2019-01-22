@@ -35,7 +35,7 @@ bright_yellow = (255,255,0)
 bright_red = (255,0,0)
 
 gameDisplay = pygame.display.set_mode([display_width,display_height])
-pygame.display.set_caption("Summative Game")
+pygame.display.set_caption("Shark Tank")
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
@@ -68,7 +68,7 @@ class Player(pygame.sprite.Sprite):
         # Call the parent class (Sprite) constructor
         super().__init__()
  
-        self.image = pygame.image.load("submarineSmall.png")
+        self.image = pygame.image.load("./Game_Images/submarineSmall.png")
         self.rect = self.image.get_rect()
         self.width = 170
         self.height = 170
@@ -90,7 +90,7 @@ class Shark(pygame.sprite.Sprite):
         self.height = 126
         self.speed = 7
         self.dodged = 0
-        self.image = pygame.image.load("Shark.png")
+        self.image = pygame.image.load("./Game_Images/Shark.png")
         self.rect = self.image.get_rect()
         self.rect.x = 1000
         self.rect.y = random.randrange(0,display_height-self.height)
@@ -101,7 +101,6 @@ class Shark(pygame.sprite.Sprite):
             # Add the block to the list of objects
             Shark_list.add(self)
             all_sprites_list.add(self)
-            print(self)
         # --- Create new sprite when one leaves the screen
         if self.rect.x <= -300:
             self.rect.x = 1000
@@ -138,7 +137,7 @@ class Whale(pygame.sprite.Sprite):
         self.height = 177
         self.speed = 5
         self.dodged = 0
-        self.image = pygame.image.load("Whale.png")
+        self.image = pygame.image.load("./Game_Images/Whale.png")
         self.rect = self.image.get_rect()
         self.rect.x = 1200
         self.rect.y = random.randrange(0,display_height-self.height)
@@ -149,13 +148,11 @@ class Whale(pygame.sprite.Sprite):
             # Add the block to the list of objects
             Whale_list.add(self)
             all_sprites_list.add(self)
-            print("YES")
         # --- Create new sprite when one leaves the screen
         if self.rect.x <= -500:
             self.rect.x = 1200
             self.rect.y = random.randrange(0,display_height-self.height)
             self.dodged += 1
-            print("YES")
 
     def bulletHit(self):
         # See if it hit a block
@@ -183,7 +180,7 @@ class Bullet(pygame.sprite.Sprite):
         # Call the parent class (Sprite) constructor
         super().__init__()
  
-        self.image = pygame.image.load("rocket.png")
+        self.image = pygame.image.load("./Game_Images/rocket.png")
         self.rect = self.image.get_rect()
         self.numbBullet = 5
 
@@ -208,7 +205,7 @@ class Setting:
         self.y=0 
         self.width = display_width 
         self.height = display_height
-        self.image = pygame.image.load("Underwater.png")
+        self.image = pygame.image.load("./Game_Images/Underwater.png")
 
     def render(self):
         gameDisplay.blit(self.image, (self.x, self.y))
@@ -273,7 +270,7 @@ def Instructions():
         gameDisplay.blit(text1, (15,y))
         pygame.display.update()
     # picture 1
-    arrows = pygame.image.load("InstructionMovement.png")
+    arrows = pygame.image.load("./Game_Images/InstructionMovement.png")
     arrows = pygame.transform.scale(arrows,(350,193))
     gameDisplay.blit(arrows,(300,150))
     pygame.display.update()
@@ -286,7 +283,7 @@ def Instructions():
         gameDisplay.blit(text2, (15,250+y))
         pygame.display.update()
     # picture 2
-    missile = pygame.image.load("InstructionRocket.png")
+    missile = pygame.image.load("./Game_Images/InstructionRocket.png")
     missile = pygame.transform.scale(missile,(450,144))
     gameDisplay.blit(missile,(237.5,525))
     pygame.display.update()
@@ -335,7 +332,7 @@ def crash():
                 pygame.quit()
                 quit()
         # diaplay "Game Over"
-        gameDisplay.blit(pygame.image.load("GameOverScreen.jpg"),(0,0))
+        gameDisplay.blit(pygame.image.load("./Game_Images/GameOverScreen.jpg"),(0,0))
         largeText = pygame.font.Font("freesansbold.ttf",115)
         TextSurf, TextRect = text_objects("Game Over", largeText, white)
         TextRect.center = ((display_width/2),(display_height/2)-100)
@@ -473,7 +470,7 @@ def Winner():
                 pygame.quit()
                 quit()
 
-        gameDisplay.blit(pygame.image.load("GameOverScreen.jpg"),(0,0))
+        gameDisplay.blit(pygame.image.load("./Game_Images/GameOverScreen.jpg"),(0,0))
         largeText = pygame.font.Font("freesansbold.ttf",115)
         TextSurf, TextRect = text_objects("You Win", largeText, black)
         TextRect.center = ((display_width/2),(display_height/2))
